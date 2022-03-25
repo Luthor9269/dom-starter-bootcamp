@@ -43,6 +43,10 @@ function createBoxes() {
   fourthSpan.innerText = "world";
   //append word into row
   secondInnerElement.appendChild(fourthSpan);
+  //create input Box infront of button inside grey box
+  const inputBox = document.createElement("input");
+  inputBox.setAttribute("type", "text");
+  inputBox.setAttribute("placeholder", "Write something here");
   //create submit button inside grey box
   const button = document.createElement("button");
   button.innerText = "Press here";
@@ -52,15 +56,12 @@ function createBoxes() {
     firstDiv.classList.add("row");
     const firstWord = document.createElement("span");
     firstWord.classList.add("word");
-    firstWord.innerText = "Barrack";
+    firstWord.innerText = `${inputBox.value}`;
     firstDiv.appendChild(firstWord);
-    const secondWord = document.createElement("span");
-    secondWord.classList.add("word");
-    secondWord.innerText = "Obama";
-    firstDiv.appendChild(secondWord);
     element.appendChild(firstDiv);
   });
   element.appendChild(secondInnerElement);
+  element.appendChild(inputBox);
   // append button into first div
   element.appendChild(button);
   console.log(element);
