@@ -5,7 +5,7 @@ button.innerText = "Create Boxes";
 //Append button into html
 document.body.appendChild(button);
 //add eventlistener when button is clicked, run the function
-button.addEventListener("click", createBoxes);
+button.addEventListener("dblclick", createBoxes);
 
 function createBoxes() {
   // first root container
