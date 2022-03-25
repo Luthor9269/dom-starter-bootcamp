@@ -5,7 +5,7 @@ button.innerText = "Create Boxes";
 //Append button into html
 document.body.appendChild(button);
 //add eventlistener when button is clicked, run the function
-button.addEventListener("dblclick", createBoxes);
+button.addEventListener("click", createBoxes);
 
 function createBoxes() {
   // first root container
@@ -43,7 +43,26 @@ function createBoxes() {
   fourthSpan.innerText = "world";
   //append word into row
   secondInnerElement.appendChild(fourthSpan);
+  //create submit button inside grey box
+  const button = document.createElement("button");
+  button.innerText = "Press here";
+  //add event listener
+  button.addEventListener("click", function moreBoxes() {
+    const firstDiv = document.createElement("div");
+    firstDiv.classList.add("row");
+    const firstWord = document.createElement("span");
+    firstWord.classList.add("word");
+    firstWord.innerText = "Barrack";
+    firstDiv.appendChild(firstWord);
+    const secondWord = document.createElement("span");
+    secondWord.classList.add("word");
+    secondWord.innerText = "Obama";
+    firstDiv.appendChild(secondWord);
+    element.appendChild(firstDiv);
+  });
   element.appendChild(secondInnerElement);
+  // append button into first div
+  element.appendChild(button);
   console.log(element);
 
   //push all this into the html file
