@@ -1,71 +1,67 @@
-// create button through DOM
-const button = document.createElement("button");
-//Text for box
-button.innerText = "Create Boxes";
-//Append button into html
-document.body.appendChild(button);
-//add eventlistener when button is clicked, run the function
-button.addEventListener("click", createBoxes);
+// creating an emoji array
+const emojiArray = ["✌","😂","😝","😁","😈","🦊"];
+let currentEmoji = "";
 
-function createBoxes() {
-  // first root container
-  const element = document.createElement("div");
-  element.classList.add("container");
-  //second root row
-  const innerElement = document.createElement("div");
-  innerElement.classList.add("row");
-  //third root word
-  const firstSpan = document.createElement("span");
-  firstSpan.classList.add("word");
-  firstSpan.innerText = "Hello";
-  //append word into row
-  innerElement.appendChild(firstSpan);
-  //create element
-  const secondSpan = document.createElement("span");
-  //giving class to the element
-  secondSpan.classList.add("word");
-  //adding text
-  secondSpan.innerText = "papaya";
-  //append word into row
-  innerElement.appendChild(secondSpan);
-  element.appendChild(innerElement);
-
-  const secondInnerElement = document.createElement("div");
-  secondInnerElement.classList.add("row");
-  //third root word
-  const thirdSpan = document.createElement("span");
-  thirdSpan.classList.add("word");
-  thirdSpan.innerText = "banana";
-  //append word into row
-  secondInnerElement.appendChild(thirdSpan);
-  const fourthSpan = document.createElement("span");
-  fourthSpan.classList.add("word");
-  fourthSpan.innerText = "world";
-  //append word into row
-  secondInnerElement.appendChild(fourthSpan);
-  //create input Box infront of button inside grey box
-  const inputBox = document.createElement("input");
-  inputBox.setAttribute("type", "text");
-  inputBox.setAttribute("placeholder", "Write something here");
-  //create submit button inside grey box
-  const button = document.createElement("button");
-  button.innerText = "Press here";
-  //add event listener
-  button.addEventListener("click", function moreBoxes() {
-    const firstDiv = document.createElement("div");
-    firstDiv.classList.add("row");
-    const firstWord = document.createElement("span");
-    firstWord.classList.add("word");
-    firstWord.innerText = `${inputBox.value}`;
-    firstDiv.appendChild(firstWord);
-    element.appendChild(firstDiv);
-  });
-  element.appendChild(secondInnerElement);
-  element.appendChild(inputBox);
-  // append button into first div
-  element.appendChild(button);
-  console.log(element);
-
-  //push all this into the html file
-  document.body.appendChild(element);
+//get random number 
+let randomNumber = () => {
+  let randomNumber = Math.floor(Math.random()*emojiArray.length);
+  return randomNumber;
 }
+
+// create button using the array
+for(let i = 0; i<emojiArray.length;i+=1){
+  const button = document.createElement('button')
+  button.innerText = `${emojiArray[i]}`;
+  document.body.appendChild(button)
+  // // need to define it as an anonymous function because if we dont do that the function will be executed when the js file runs 
+  // button.addEventListener("click", () => emojiSquare(button.innerText))
+  // setting emoji type without displaying it first
+  button.addEventListener("keydown", e =>{
+    console.log(e);
+    let randomLength = Number(e.keyCode);
+    console.log(randomLength)
+    emojiSquare(button.innerText, randomLength)
+  })
+}
+
+// creating emoji squares using loops
+//takes in the button.innerText emoji at that point 
+// uses the random length provided by the key that is keyd in 
+function emojiSquare(emoji,randomLength) {
+  const p = document.createElement('p');
+  p.setAttribute(`id`, 'para');
+  for(let i=0; i<randomLength;i+=1){
+    const br = document.createElement('word');
+    br.innerText = `${emoji}\n` ;
+    for(let h=0; h<randomLength; h+=1){
+      const br2 = document.createElement('word')
+      br2.innerText = `${emoji}` ;
+      p.appendChild(br2)
+    }
+    p.appendChild(br);
+  }
+  document.body.append(p);
+}
+
+
+
+
+
+// //// 1. Base Emoji button displaying 
+// //create root
+// const div = document.createElement("div");
+// //create buttons
+// const smileyButton = document.createElement("button");
+// smileyButton.innerText = "😄";
+// div.appendChild(smileyButton);
+// const shadeButton = document.createElement("button");
+// shadeButton.innerText = "😎";
+// div.appendChild(shadeButton);
+// const ohNoButton = document.createElement("button");
+// ohNoButton.innerText = "😦";
+// div.appendChild(ohNoButton);
+// document.body.appendChild(div)
+// smileyButton.addEventListener("click", () => emojiSquare(smileyButton.innerText));
+// shadeButton.addEventListener("click", () => emojiSquare(shadeButton.innerText));
+// ohNoButton.addEventListener("click", () => emojiSquare(ohNoButton.innerText));
+
