@@ -26,7 +26,7 @@ for(let i = 0; i<emojiArray.length;i+=1){
 
 // creating emoji squares using loops
 //takes in the button.innerText emoji at that point 
-// uses the random length provided by the key that is keyd in 
+// uses the random length provided by the key that is keyed in 
 function emojiSquare(emoji,randomLength) {
   const p = document.createElement('p');
   p.setAttribute(`id`, 'para');
@@ -43,9 +43,20 @@ function emojiSquare(emoji,randomLength) {
   document.body.append(p);
 }
 
+function randomise(){
+let randomEmoji = emojiArray[randomNumber()];
+let randomNumb = Math.floor(Math.random()*50+1);
+emojiSquare(randomEmoji, randomNumb);
 
+}
+// create new function that gets random emoji and random number of square length
 
-
+const newDiv = document.createElement(`div`)
+const randomButton = document.createElement('button');
+randomButton.innerText = `Randomise the emoji and number of square`;
+newDiv.appendChild(randomButton)
+document.body.appendChild(newDiv);
+randomButton.addEventListener(`click`, () => randomise())
 
 // //// 1. Base Emoji button displaying 
 // //create root
